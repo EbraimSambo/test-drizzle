@@ -5,7 +5,8 @@ import { relations } from "drizzle-orm";
 
 export const posts = pgTable("posts",{
     id: serial("id").primaryKey(),
-    description: text("description").unique(),
+    description: text("description"),
+    title: text("title"),
     published: boolean("published").default(false),
     createdAt: timestamp("createdAt").defaultNow(),
     userId: integer("user_id").references(()=>users.id)

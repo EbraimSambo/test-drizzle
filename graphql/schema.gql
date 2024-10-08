@@ -2,6 +2,12 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+input CreatePostInput {
+  description: String!
+  published: Boolean
+  title: String!
+}
+
 input CreateUserInput {
   email: String!
   name: String!
@@ -9,14 +15,30 @@ input CreateUserInput {
 }
 
 type Mutation {
+  createPost(createPostInput: CreatePostInput!): Post!
   createUser(createUserInput: CreateUserInput!): User!
+  removePost(id: Int!): Post!
   removeUser(id: Int!): User!
+  updatePost(updatePostInput: UpdatePostInput!): Post!
   updateUser(updateUserInput: UpdateUserInput!): User!
 }
 
+type Post {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
 type Query {
+  post(id: Int!): Post!
   user(id: Int!): User!
   users: [User!]!
+}
+
+input UpdatePostInput {
+  description: String
+  id: Int!
+  published: Boolean
+  title: String
 }
 
 input UpdateUserInput {

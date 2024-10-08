@@ -1,6 +1,6 @@
 {
-  "id": "f00b3de5-e64c-48b9-844b-4c06fc335433",
-  "prevId": "fbbd4da6-3a6e-424f-8444-77ec7f37dc52",
+  "id": "f389d847-ece7-44c8-aa17-3dafb0c5adcd",
+  "prevId": "3e545fc7-39d8-4521-9b47-87357f943cfc",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
@@ -16,6 +16,12 @@
         },
         "description": {
           "name": "description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "title": {
+          "name": "title",
           "type": "text",
           "primaryKey": false,
           "notNull": false
@@ -58,15 +64,7 @@
         }
       },
       "compositePrimaryKeys": {},
-      "uniqueConstraints": {
-        "posts_description_unique": {
-          "name": "posts_description_unique",
-          "nullsNotDistinct": false,
-          "columns": [
-            "description"
-          ]
-        }
-      }
+      "uniqueConstraints": {}
     },
     "public.users": {
       "name": "users",

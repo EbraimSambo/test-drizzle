@@ -16,12 +16,11 @@ export class UserService {
   async create(createUserInput: CreateUserInput) {
     const {email,name,password} = createUserInput
 
-    // const user = await this.database
-    // .select()
-    // .from(schema.users)
-    // .where(eq(schema.users.email, email))
+    const user = await this.database.query.users.findFirst({
+      where: (users, { eq }) => eq(users.email, email),
+    })
 
-    // if(user) throw new ConflictException("usuario criado com sucesso")
+    if(user) throw new ConflictException("ESTE USUARIO JÁ FOI CRIADO")
 
     const hasheded = await hash(password, 10)
     return await this.database.insert(schema.users).values({
