@@ -15,6 +15,13 @@
       "when": 1728353236982,
       "tag": "0001_medical_marvex",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1728357757328,
+      "tag": "0002_good_spitfire",
+      "breakpoints": true
     }
   ]
 }
