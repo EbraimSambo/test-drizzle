@@ -3,24 +3,24 @@ import { drizzle, NodePgDatabase } from 'drizzle-orm/node-postgres';
 import { Pool } from 'pg';
 import { ConfigService } from '@nestjs/config';
 import * as schema from 'src/database/schemas/index.schema';
-export const  DRIZZLE = Symbol("'drizzle-connection'")
+import { DrizzleMySqlModule } from '@knaadh/nestjs-drizzle-mysql2';
+export const DRIZZLE = Symbol("'drizzle-connection'")
 @Module({
-    providers: [
-        {
-          provide:  DRIZZLE,
-          inject: [ConfigService],
-          useFactory: async (configService: ConfigService) => {
-            const databasURL = configService.get<string>('DATABASE_URL');
-            const pool = new Pool({
-              connectionString: databasURL,
-              ssl: {
-                rejectUnauthorized: false,
-              },
-            });
-            return drizzle(pool, { schema }) as NodePgDatabase<typeof schema>;
-          },
-        },
-      ],
-      exports: [DRIZZLE],
+    providers: [],
+    imports: [
+        DrizzleMySqlModule.register({
+            tag: 'DB_DEV',
+            mysql: {
+                connection: 'client',
+                config: {
+                    host: 'srv1672.hstgr.io',
+                    user: 'u151028130_drizzle',
+                    database: 'u151028130_drizzle',
+                    password: 'Deezycheezy@2'
+                },
+            },
+            config: { schema: { ...schema }, mode: 'default' },
+        }),],
+    exports: [],
 })
-export class DatabaseModule {}
+export class DatabaseModule { }

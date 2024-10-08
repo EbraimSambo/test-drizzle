@@ -1,17 +1,18 @@
 import { ConflictException, Inject, Injectable } from '@nestjs/common';
 import { CreateUserInput } from './dto/create-user.input';
 import { UpdateUserInput } from './dto/update-user.input';
-import * as schema from "../database/schemas/user.schema"
+import * as schema from "../database/schemas/index.schema"
 import { DrizzleDB } from '../database/types/schema';
 import { DRIZZLE } from 'src/database/database.module';
 import { eq } from 'drizzle-orm';
 import { hash } from 'bcrypt';
+import { MySql2Database } from 'drizzle-orm/mysql2';
 
 @Injectable()
 export class UserService {
   constructor(
-    @Inject(DRIZZLE)
-    private readonly database: DrizzleDB
+    @Inject('DB_DEV')
+    private readonly database: MySql2Database<typeof schema>
   ){}
   async create(createUserInput: CreateUserInput) {
     const {email,name,password} = createUserInput

@@ -1,15 +1,14 @@
-import { int } from "drizzle-orm/mysql-core";
-import { boolean, integer, pgTable, serial, text, timestamp } from "drizzle-orm/pg-core";
+import { boolean, int, mysqlTable, serial, text, timestamp } from "drizzle-orm/mysql-core";
 import { users } from "./user.schema";
 import { relations } from "drizzle-orm";
 
-export const posts = pgTable("posts",{
+export const posts = mysqlTable("posts",{
     id: serial("id").primaryKey(),
     description: text("description"),
     title: text("title"),
     published: boolean("published").default(false),
     createdAt: timestamp("createdAt").defaultNow(),
-    userId: integer("user_id").references(()=>users.id)
+    userId: int("user_id").references(()=>users.id)
 })
 
 export const postsRelations = relations(posts, ({one})=>({

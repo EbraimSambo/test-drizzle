@@ -4,8 +4,16 @@ export default defineConfig({
   
   schema: './src/**/**.schema.ts',
   out: './drizzle',
-  dialect: 'postgresql',
+  dialect: 'mysql',
+
   dbCredentials: {
-    url: process.env.DATABASE_URL,
+      host: "srv1672.hstgr.io",
+      database: "u151028130_drizzle",
+      password: "Deezycheezy@2",
+      user: "u151028130_drizzle",
+      ssl: {
+        rejectUnauthorized: false
+      }
   },
+  
 });

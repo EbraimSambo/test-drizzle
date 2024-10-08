@@ -3,21 +3,22 @@ import { CreatePostInput } from './dto/create-post.input';
 import { UpdatePostInput } from './dto/update-post.input';
 import { DRIZZLE } from 'src/database/database.module';
 import { DrizzleDB } from 'src/database/types/schema';
-import { posts } from 'src/database/schemas/index.schema';
+import * as schema from "../database/schemas/index.schema";
+import { MySql2Database } from 'drizzle-orm/mysql2';
 
 @Injectable()
 export class PostService {
 
   constructor(
-    @Inject(DRIZZLE)
-    private readonly database: DrizzleDB
+    @Inject('DB_DEV')
+    private readonly database: MySql2Database<typeof schema>
   ){}
 
   create(createPostInput: CreatePostInput, userId: number) {
 
     const {description,title} = createPostInput
 
-    return this.database.insert(posts).values({
+    return this.database.insert(schema.posts).values({
         description,
         title,
         userId

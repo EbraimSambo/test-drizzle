@@ -1,1 +1,0 @@
-ALTER TABLE "posts" DROP CONSTRAINT "posts_description_unique";

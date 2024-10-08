@@ -1,26 +1,19 @@
 {
   "version": "7",
-  "dialect": "postgresql",
+  "dialect": "mysql",
   "entries": [
     {
       "idx": 0,
-      "version": "7",
-      "when": 1728362661092,
-      "tag": "0000_cooing_cobalt_man",
+      "version": "5",
+      "when": 1728369586770,
+      "tag": "0000_spooky_krista_starr",
       "breakpoints": true
     },
     {
       "idx": 1,
-      "version": "7",
-      "when": 1728362756861,
-      "tag": "0001_wooden_lord_tyger",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "7",
-      "when": 1728363945410,
-      "tag": "0002_same_wendigo",
+      "version": "5",
+      "when": 1728369681071,
+      "tag": "0001_bright_squirrel_girl",
       "breakpoints": true
     }
   ]
